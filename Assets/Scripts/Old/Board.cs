@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     public int width;
     public int height;
 
-    public int borderSize;
+    public float borderSize;
 
     public GameObject tilePrefab;
     public GameObject[] gamePiecePrefabs;
@@ -34,16 +34,22 @@ public class Board : MonoBehaviour
         m_allTiles = new Tile[width, height];
         _allGamePieces = new GamePiece[width, height];
         //_symbolCascading = new Cascading [width];
-        for (int i = 0; i < _symbolCascading.Length; i++)
-        {
-            _symbolCascading[i].isCascading = false;
-        }
 
+        ResetSymbolCascadingAttributes();
         SetupTiles();
         SetupCamera();
         SetUpSymbolSpawnPos();
         FillBoard();
 
+    }
+
+    private void ResetSymbolCascadingAttributes()
+    {
+        for (int i = 0; i < _symbolCascading.Length; i++)
+        {
+            _symbolCascading[i].symbolCascadeCount = 0;
+            _symbolCascading[i].isCascading = false;
+        }
     }
 
     void SetupCamera()
@@ -54,7 +60,7 @@ public class Board : MonoBehaviour
 
         float verticalSize = (float)height / 2f + (float)borderSize;
 
-        float horizontalSize = ((float)width / 2f + (float)borderSize) / aspectRatio;
+        float horizontalSize = ((float)width / 2f + borderSize) / aspectRatio;
 
         Camera.main.orthographicSize = (verticalSize > horizontalSize) ? verticalSize : horizontalSize;
 
@@ -519,7 +525,18 @@ public class Board : MonoBehaviour
                 {
                     if (_allGamePieces[column, j] != null)
                     {
-                        _allGamePieces[column, j].MovePiece(column, i, collapseTime * (j - i));
+                        if (_symbolCascading[column].isCascading)
+                        {
+                            _symbolCascading[column].symbolCascadeCount++;
+                            _allGamePieces[column, j].MoveOnCollapseColumn(column, i, collapseTime * (j - i), _symbolCascading[column].symbolCascadeCount);
+                        }
+                        else 
+                        {
+                            _allGamePieces[column, j].MoveOnCollapseColumn(column, i, collapseTime * (j - i));
+                            _symbolCascading[column].isCascading = true;
+                            _symbolCascading[column].symbolCascadeCount++;
+                        }
+
                         _allGamePieces[column, i] = _allGamePieces[column, j];
                         _allGamePieces[column, i].SetCoord(column, i);
 
@@ -605,7 +622,7 @@ public class Board : MonoBehaviour
         HighlightPieces(gamePieces);
         yield return new WaitForSeconds(0.5f);
         bool isFinished = false;
-
+        ResetSymbolCascadingAttributes();
         while (!isFinished)
         {
             ClearPieceAt(gamePieces);
@@ -646,11 +663,7 @@ public class Board : MonoBehaviour
         int maxInterations = 100;
         int iterations = 0;
 
-        for (int i = 0; i < _symbolCascading.Length; i++)
-        {
-            _symbolCascading[i].symbolCascadeCount = 0;
-            _symbolCascading[i].isCascading = false;
-        }
+        ResetSymbolCascadingAttributes();
 
         for (int i = 0; i < width; i++)
         {

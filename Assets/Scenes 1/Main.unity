@@ -402,7 +402,7 @@ MonoBehaviour:
   _spawnPositionParent: {fileID: 1851144761}
   width: 8
   height: 9
-  borderSize: 2
+  borderSize: 0.2
   tilePrefab: {fileID: 187378, guid: 40e936c9a5bf249fd961db8ef23fbc7b, type: 3}
   gamePiecePrefabs:
   - {fileID: 6769359263761318584, guid: fac6576607046a64e956887150a73dd0, type: 3}
@@ -411,23 +411,23 @@ MonoBehaviour:
   - {fileID: 6832980484670643949, guid: f0fd86e8087ba774b84661c6e1c3ce36, type: 3}
   - {fileID: 579475071706812685, guid: e7500d68cb03f104383564eaee1dd7f4, type: 3}
   _symbolCascading:
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  - column: 0
+  - symbolCascadeCount: 0
     isCascading: 0
-  swapTime: 0.25
+  swapTime: 0.15
   m_playerInputEnabled: 1
   _symbolSpawnPosition: []
 --- !u!4 &1688913552

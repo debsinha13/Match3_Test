@@ -65,7 +65,7 @@ public class GamePiece : MonoBehaviour {
 
     private float RemapCascadeTime(float pos)
     {
-        return _cascadeAttributes.Time()/ pos;
+        return _cascadeAttributes.Time() / pos;
     }
 
 	private int _onMoveCompleteX;
@@ -78,14 +78,25 @@ public class GamePiece : MonoBehaviour {
         }
     }
 
-    public void MovePiece (int destX, int destY, float timeToMove)
+    public void MovePiece (int destX, int destY, float timeToMove, float delay = 0f)
 	{
 
 		if (!m_isMoving)
 		{
-			StartCoroutine(MoveRoutine(new Vector3(destX, destY,0), timeToMove));	
-		}
+             StartCoroutine(MoveRoutine(new Vector3(destX, destY, 0), timeToMove, delay));
+        }
 	}
+
+    public void MoveOnCollapseColumn(int destX, int destY, float timeToMove, float delay = 0f)
+    {
+
+        if (!m_isMoving)
+        {
+            if (delay > 0f) StartCoroutine(MoveRoutine(new Vector3(destX, destY, 0), _cascadeAttributes.CollapseTime() * (yIndex - destY), delay * _cascadeAttributes.GetDelayCollapseColumn()));
+            else StartCoroutine(MoveRoutine(new Vector3(destX, destY, 0), timeToMove, delay));
+
+        }
+    }
 
     IEnumerator MoveRoutine(Vector3 startPos, Vector3 destination, float timeToMove, float delay = 0)
     {
