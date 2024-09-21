@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public static class Move
 {
-    public static IEnumerator MoveRoutine(Transform obj, Vector3 startPos, Vector3 destination, float timeToMove, AnimationCurve animationCurve,float delay = 0)
+    public static IEnumerator MoveRoutine(Transform obj, Vector3 startPos, Vector3 destination, float timeToMove, AnimationCurve animationCurve,float delay = 0, Action callback = null)
     {
         if(delay > 0) { yield return new WaitForSeconds(delay); }
 
@@ -27,5 +28,6 @@ public static class Move
 
         // wait until next frame
         yield return null;
+        callback?.Invoke();
     }
 }

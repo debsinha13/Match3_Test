@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7789555702524326564
 Transform:
   m_ObjectHideFlags: 0
@@ -162,30 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e99731600214f97a04e3377554ebcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cascadingMoveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: -0.5464259
-      outSlope: -0.5464259
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.08920181
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  xIndex: 0
-  yIndex: 0
+  _cascadeAttributes: {fileID: 11400000, guid: abd5a9cbb4a09db47a76fe024051fdb1, type: 2}
+  _spriteObj: {fileID: 3267377399244946110}
   matchValue: 0
