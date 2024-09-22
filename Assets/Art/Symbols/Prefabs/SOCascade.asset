@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e69f0c906e1a64eb490ce7d81823c0, type: 3}
   m_Name: SOCascade
   m_EditorClassIdentifier: 
-  _time: 1
-  _delay: 0.1
+  _time: 0.1
+  _collapseDelay: 0.08
   _curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.0034977417
-      outSlope: 0.0034977417
+      inSlope: 0.03769208
+      outSlope: 0.03769208
       tangentMode: 0
       weightedMode: 2
       inWeight: 0
-      outWeight: 0.47769955
+      outWeight: 0.5762911
     - serializedVersion: 3
       time: 0.9424883
       value: 1.0015723
@@ -38,5 +38,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _delayCollapseColumn: 0.06
-  _collapseTime: 0.1
+  _refillDelay: 0.12

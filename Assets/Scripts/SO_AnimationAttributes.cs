@@ -6,16 +6,14 @@ using UnityEngine;
 public class SO_AnimationAttributes : ScriptableObject
 {
     [SerializeField] private float _time;
-    [SerializeField] private float _delay;
+    [SerializeField] private float _collapseDelay;
     [SerializeField] private AnimationCurve _curve;
-    [SerializeField] private float _delayCollapseColumn = 0.01f;
-    [SerializeField] private float _collapseTime = 0.1f;
+    [SerializeField] private float _refillDelay = 0.3f;
 
     public float Time() { return _time; }
-    public float Delay() { return _delay; }
+    public float CollapseDelay() { return _collapseDelay; }
     public AnimationCurve Curve() { return _curve;}
 
-    public float GetDelayCollapseColumn() { return _delayCollapseColumn; }
+    public float RefillDelay() { return _refillDelay; }
 
-    public float CollapseTime() { return _collapseTime; }
 }
