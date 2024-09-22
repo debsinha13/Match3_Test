@@ -15,7 +15,8 @@ public class Board : MonoBehaviour
     public float borderSize;
 
     public GameObject tilePrefab;
-    public GameObject[] gamePiecePrefabs;
+    [SerializeField] private SymbolsObjectPool _symbolsPool;
+    //public GameObject[] gamePiecePrefabs;
 
     [SerializeField] private Cascading[] _symbolCascading;
 
@@ -101,16 +102,18 @@ public class Board : MonoBehaviour
         }
     }
 
-    GameObject GetRandomGamePiece()
+    private GamePiece GetRandomGamePiece()
     {
-        int randomIdx = Random.Range(0, gamePiecePrefabs.Length);
-
-        if (gamePiecePrefabs[randomIdx] == null)
-        {
-            Debug.LogWarning("BOARD:  " + randomIdx + "does not contain a valid GamePiece prefab!");
-        }
-
-        return gamePiecePrefabs[randomIdx];
+        int randomIdx = Random.Range(0, _symbolsPool.symbolsPools.Count);
+        return _symbolsPool.symbolsPools[randomIdx].Get();
+        //switch (randomIdx)
+        //{ 
+        //    case 0: return _symbolsPool._broomPrefabPool.Get();
+        //    case 1: return _symbolsPool._crackerPrefabPool.Get();
+        //    case 2: return _symbolsPool._heartPrefabPool.Get();
+        //    case 3: return _symbolsPool._shieldPrefabPool.Get();
+        //    case 4: return _symbolsPool._squarePrefabPool.Get();
+        //}
     }
     /// <summary>
     /// Place Gamepiece, checks if it is within bounds
@@ -118,7 +121,7 @@ public class Board : MonoBehaviour
     /// <param name="gamePiece"></param>
     /// <param name="x"></param>
     /// <param name="y"></param>
-    public void PlaceGamePiece(GamePiece gamePiece, int x, int y)
+    public void AssignPieceToBoard(GamePiece gamePiece, int x, int y)
     {
         if (gamePiece == null)
         {
@@ -160,15 +163,15 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     GamePiece FillRandomAt(int x, int y)
     {
-        GameObject randomPiece = Instantiate(GetRandomGamePiece(), Vector3.zero, Quaternion.identity) as GameObject;
+        GamePiece randomPiece = GetRandomGamePiece(); 
 
         if (randomPiece != null)
         {
-            randomPiece.GetComponent<GamePiece>().Init(this);
-            PlaceGamePiece(randomPiece.GetComponent<GamePiece>(), x, y);
-
             randomPiece.transform.parent = transform;
-            return randomPiece.GetComponent<GamePiece>();
+            randomPiece.Init(this);
+            AssignPieceToBoard(randomPiece, x, y);
+            randomPiece.SetPiecePosition(x, y);
+            return randomPiece;
         }
         return null;
     }
@@ -200,7 +203,7 @@ public class Board : MonoBehaviour
                         }
                     }
                     piece.EnableSpriteObj(true);
-                    PlaceGamePiece(piece, i, j);
+                    AssignPieceToBoard(piece, i, j);
                 }
             }
         }
@@ -351,7 +354,7 @@ public class Board : MonoBehaviour
             }
             else
             {
-                if (nextPiece.matchValue == startPiece.matchValue && !matches.Contains(nextPiece))
+                if (nextPiece.type == startPiece.type && !matches.Contains(nextPiece))
                 {
                     matches.Add(nextPiece);
                 }
@@ -482,7 +485,7 @@ public class Board : MonoBehaviour
         if (pieceToClear != null)
         {
             _allGamePieces[x, y] = null;
-            Destroy(pieceToClear.gameObject);
+            _symbolsPool.ReleasePoolPrefab(pieceToClear.type, pieceToClear);
         }
 
     }

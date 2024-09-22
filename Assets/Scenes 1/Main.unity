@@ -400,16 +400,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileZPosition: 1
   _spawnPositionParent: {fileID: 1851144761}
-  width: 8
-  height: 9
-  borderSize: 0.2
+  width: 4
+  height: 4
+  borderSize: 1
   tilePrefab: {fileID: 187378, guid: 40e936c9a5bf249fd961db8ef23fbc7b, type: 3}
-  gamePiecePrefabs:
-  - {fileID: 6769359263761318584, guid: fac6576607046a64e956887150a73dd0, type: 3}
-  - {fileID: 7048909534029341358, guid: eacccca55b90096408696a98d81df6ec, type: 3}
-  - {fileID: 1249184355797971330, guid: 462c7fd0e6a951042ab5abd6dc0c399b, type: 3}
-  - {fileID: 6832980484670643949, guid: f0fd86e8087ba774b84661c6e1c3ce36, type: 3}
-  - {fileID: 579475071706812685, guid: e7500d68cb03f104383564eaee1dd7f4, type: 3}
+  _symbolsPool: {fileID: 0}
   _symbolCascading:
   - symbolCascadeCount: 0
     isCascading: 0
@@ -490,7 +485,7 @@ Camera:
   m_GameObject: {fileID: 1837949749}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -564,7 +559,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -622,7 +617,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1855511929
+--- !u!1 &1929213862
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -630,39 +625,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1855511931}
-  - component: {fileID: 1855511930}
+  - component: {fileID: 1929213864}
+  - component: {fileID: 1929213863}
   m_Layer: 0
-  m_Name: SetUpBoard
+  m_Name: SymbolsPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1855511930
+  m_IsActive: 1
+--- !u!114 &1929213863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855511929}
+  m_GameObject: {fileID: 1929213862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d348a0cb860e94491d8fec5b187217, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c1651c260a05fc4ba81974f66253f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 8
-  cols: 9
---- !u!4 &1855511931
+  _broomPrefab: {fileID: 317102245930639347, guid: fac6576607046a64e956887150a73dd0,
+    type: 3}
+  _crackerPrefab: {fileID: 4054870710055354341, guid: eacccca55b90096408696a98d81df6ec,
+    type: 3}
+  _heartPrefab: {fileID: 5243021468119526601, guid: 462c7fd0e6a951042ab5abd6dc0c399b,
+    type: 3}
+  _shieldPrefab: {fileID: 523707553803830182, guid: f0fd86e8087ba774b84661c6e1c3ce36,
+    type: 3}
+  _squarePrefab: {fileID: 5881066915959770182, guid: e7500d68cb03f104383564eaee1dd7f4,
+    type: 3}
+  _defaultCapacity: 30
+  _maxCapacity: 50
+  _symbolsOnActiveTransform: {fileID: 1688913552}
+--- !u!4 &1929213864
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855511929}
+  m_GameObject: {fileID: 1929213862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 1.5666916, y: 8.4952545, z: 0.07816524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -673,8 +679,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1837949754}
+  - {fileID: 1929213864}
   - {fileID: 1688913552}
   - {fileID: 969181879}
   - {fileID: 352117024}
   - {fileID: 1851144761}
-  - {fileID: 1855511931}

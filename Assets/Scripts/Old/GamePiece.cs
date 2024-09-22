@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum MatchType
+{
+    Broom,
+    Cracker,
+    Heart,
+    Shield,
+    Square
+}
 public class GamePiece : MonoBehaviour {
 
     [SerializeField] private SO_AnimationAttributes _cascadeAttributes;
@@ -14,16 +22,7 @@ public class GamePiece : MonoBehaviour {
 
 	bool m_isMoving = false;
 
-	public MatchValue matchValue;
-
-	public enum MatchValue
-	{
-		Broom,
-		Cracker,
-		Heart,
-		Shield,
-		Square
-	}
+    public MatchType type;
 
 	
 
@@ -74,7 +73,7 @@ public class GamePiece : MonoBehaviour {
 	{
         if (_board != null)
         {
-            _board.PlaceGamePiece(this, _onMoveCompleteX, _onMoveCompleteY);
+            _board.AssignPieceToBoard(this, _onMoveCompleteX, _onMoveCompleteY);
         }
     }
 
@@ -126,7 +125,7 @@ public class GamePiece : MonoBehaviour {
         transform.position = destination;
         if (_board != null)
         {
-            _board.PlaceGamePiece(this, (int)destination.x, (int)destination.y);
+            _board.AssignPieceToBoard(this, (int)destination.x, (int)destination.y);
         }
         // wait until next frame
         yield return null;
@@ -163,7 +162,7 @@ public class GamePiece : MonoBehaviour {
         transform.position = destination;
         if (_board != null)
         {
-            _board.PlaceGamePiece(this, (int)destination.x, (int)destination.y);
+            _board.AssignPieceToBoard(this, (int)destination.x, (int)destination.y);
         }
         // wait until next frame
         yield return null;
@@ -175,5 +174,19 @@ public class GamePiece : MonoBehaviour {
     public void EnableSpriteObj(bool toggle)
     { 
         _spriteObj.SetActive(toggle);
+    }
+
+    public void SetPiecePosition(int x, int y)
+    {
+        //if (gamePiece == null)
+        //{
+        //    Debug.LogWarning("BOARD:  Invalid GamePiece!");
+        //    return;
+        //}
+
+        transform.position = new Vector3(x, y, 0);
+        transform.rotation = Quaternion.identity;
+
+
     }
 }
