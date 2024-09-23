@@ -7,7 +7,7 @@ Cascading Animations: Created sequential animations for the cascading of symbols
 
 Technical Implementation:
 Animations were achieved through a combination of scripts, particle effects, animations, and shaders.
-For script-driven animations, Unity Coroutines and the DoTween library were utilized to manage the animation flow.
+For script-driven animations, Unity Coroutines and the DoTween library were utilized.
 
 Development Process:
 I started with base code from an older Udemy tutorial on match games and significantly refactored it to meet my specific requirements, focusing on structure improvements, animation enhancements, and performance optimization.
