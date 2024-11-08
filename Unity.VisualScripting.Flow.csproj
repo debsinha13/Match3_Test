@@ -290,8 +290,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Ports\ValueOutput.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\MissingType.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Math\Vector2\Vector2Lerp.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Math\Vector2\Vector2Sum.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Dependencies\NCalc\EvaluationOption.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Math\Vector2\Vector2Sum.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Control\SelectOnInteger.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\EditorBinding\UnitOrderAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Dependencies\NCalc\SerializationVisitor.cs" />
@@ -443,8 +443,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Logic\EqualityComparison.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Events\GUI\OnPointerEnter.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Graph\GetScriptGraph.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Time\WaitWhileUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Variables\IUnifiedVariableUnit.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Time\WaitWhileUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Variables\Obsolete\ISavedVariableUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Math\Maximum.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Framework\Math\Vector3\Vector3Angle.cs" />
@@ -820,6 +820,10 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
@@ -832,20 +836,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.2\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.2\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
